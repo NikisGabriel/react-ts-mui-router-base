@@ -1,10 +1,9 @@
-import { useTheme } from "@mui/material";
+import { RouterProvider } from "react-router-dom";
 
-import Box from "@mui/material/Box";
+import { router } from "./routes"; // Minhas rotas
 
 function App() {
-  const theme = useTheme();
-  return <Box sx={{ color: theme.palette.primary.main }}>Hello World!</Box>;
+  return <RouterProvider router={router} />;
 }
 
 export default App;
