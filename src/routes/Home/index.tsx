@@ -4,15 +4,13 @@ import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { useTheme } from "@mui/material/styles";
+import { MyButton } from "../../components/MyButton";
 
 function Home() {
   const [count, setCount] = useState(0);
   const theme = useTheme(); // Usando o provider de tema do MUI
 
   const handleClick = () => setCount((s) => s + 1);
-  const handleThrowError = () => {
-    throw new Error("novo erro");
-  };
 
   return (
     <Container sx={{ display: "block", maxWidth: theme.spacing(800) }}>
@@ -26,9 +24,13 @@ function Home() {
         <Button variant="contained" onClick={handleClick}>
           Incrementar
         </Button>
-        <Button variant="contained" onClick={handleThrowError}>
-          Lançar erro
-        </Button>
+        <MyButton
+          title="Ir para um rota invalida"
+          href="/teste"
+          variant="contained"
+        >
+          Ir para um rota invalida
+        </MyButton>
       </Container>
     </Container>
   );
