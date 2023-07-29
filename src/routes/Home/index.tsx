@@ -10,6 +10,8 @@ function Home() {
   const [count, setCount] = useState(0);
   const theme = useTheme(); // Usando o provider de tema do MUI
 
+  theme.palette;
+
   const handleClick = () => setCount((s) => s + 1);
 
   return (

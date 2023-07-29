@@ -1,6 +1,6 @@
 import Button, { ButtonProps } from "@mui/material/Button";
 
-type IMyButtonProps = Omit<ButtonProps, "component"> &
+type IMyButtonProps = Omit<ButtonProps, "component" | "LinkComponent"> &
   Required<Pick<ButtonProps, "children" | "title">>;
 
 function MyButton({ title, disabled, ...rest }: IMyButtonProps) {
