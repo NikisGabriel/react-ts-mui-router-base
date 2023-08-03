@@ -34,4 +34,5 @@ yarn dev
 - **Material-UI**: Framework de design que proporciona componentes e estilos pré-construídos, tornando o desenvolvimento da interface mais rápido e consistente.
 - **React Router**: Gerenciador de rotas para criação de aplicações de várias páginas.
 - **Husky**: Utilizado para executar scripts e ganchos antes de confirmar alterações no git, garantindo que o código esteja sempre em conformidade com os padrões definidos.
-- **SWR**: Biblioteca para realizar fetch de dados de forma otimizada e gerenciada.
+- **Axios**: Biblioteca escolhida para lidar com requisições HTTP
+.
