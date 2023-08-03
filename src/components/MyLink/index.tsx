@@ -1,14 +1,32 @@
-import { Link as RouterLink } from "react-router-dom";
-
 import Link, { LinkProps } from "@mui/material/Link";
 
-type IMyLinkProps = LinkProps &
-  Required<Pick<LinkProps, "aria-label" | "href" | "children">>;
+import { LinkBehavior } from "../LinkBehavior";
 
-function MyLink({ href, underline = "none", ...rest }: IMyLinkProps) {
+import {
+  withCustomTypographyProps,
+  ICustomTypographyProps,
+} from "../../hocs/withCustomTypographyProps";
+
+type ILinkCustomTypographyProps = ICustomTypographyProps<LinkProps>;
+
+type IMyLinkProps = Omit<
+  ILinkCustomTypographyProps,
+  "aria-label" | "component"
+> &
+  Required<Pick<ILinkCustomTypographyProps, "title" | "href" | "children">>;
+
+const MyLink = ({ title, underline = "none", ...rest }: IMyLinkProps) => {
+  const LinkWithCustomTypographyProps =
+    withCustomTypographyProps<LinkProps>(Link);
   return (
-    <Link component={RouterLink} underline={underline} to={href} {...rest} />
+    <LinkWithCustomTypographyProps
+      component={LinkBehavior}
+      title={title}
+      aria-label={title}
+      underline={underline}
+      {...rest}
+    />
   );
-}
+};
 
 export { MyLink };

@@ -5,6 +5,8 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { useTheme } from "@mui/material/styles";
 import { MyButton } from "../../components/MyButton";
+import { MyLink } from "../../components/MyLink";
+import { MyTypography } from "../../components/MyTypography";
 
 function Home() {
   const [count, setCount] = useState(0);
@@ -23,16 +25,30 @@ function Home() {
         Valor do estado: {count}
       </Typography>
       <Container sx={{ display: "flex", gap: theme.spacing(20) }}>
-        <Button variant="contained" onClick={handleClick}>
+        <Button
+          sx={{ textTransform: "uppercase" }}
+          variant="contained"
+          onClick={handleClick}
+        >
           Incrementar
         </Button>
         <MyButton
-          title="Ir para um rota invalida"
+          sx={{ textTransform: "uppercase" }}
+          aria-label="Ir para um rota invalida"
           href="/teste"
           variant="contained"
         >
           Ir para um rota invalida
         </MyButton>
+        <MyLink
+          textColor="primary"
+          title=""
+          aria-label="Ir para um rota invalida"
+          href="/teste"
+        >
+          Ir para um rota invalida
+        </MyLink>
+        <MyTypography component="h2">teste</MyTypography>
       </Container>
     </Container>
   );

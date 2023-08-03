@@ -1,18 +1,36 @@
+import { forwardRef } from "react";
+
 import Button, { ButtonProps } from "@mui/material/Button";
 
-type IMyButtonProps = Omit<ButtonProps, "component" | "LinkComponent"> &
-  Required<Pick<ButtonProps, "children" | "title">>;
+import { LinkBehavior } from "../LinkBehavior";
 
-function MyButton({ title, disabled, ...rest }: IMyButtonProps) {
-  return (
-    <Button
-      title={title}
-      aria-label={title}
-      aria-disabled={disabled}
-      disabled={disabled}
-      {...rest}
-    />
-  );
-}
+import {
+  withCustomTypographyProps,
+  ICustomTypographyProps,
+} from "../../hocs/withCustomTypographyProps";
+
+type IButtonCustomTypographyProps = ICustomTypographyProps<ButtonProps>;
+
+export type IMyButtonProps = Omit<
+  IButtonCustomTypographyProps,
+  "component" | "LinkComponent"
+> &
+  Required<Pick<IButtonCustomTypographyProps, "children" | "aria-label">>;
+
+const MyButton = forwardRef<HTMLButtonElement, IMyButtonProps>(
+  ({ disabled, ...rest }, ref) => {
+    const ButtonWithCustomTypographyProps =
+      withCustomTypographyProps<ButtonProps>(Button);
+    return (
+      <ButtonWithCustomTypographyProps
+        LinkComponent={LinkBehavior}
+        ref={ref}
+        aria-disabled={disabled}
+        disabled={disabled}
+        {...rest}
+      />
+    );
+  }
+);
 
 export { MyButton };

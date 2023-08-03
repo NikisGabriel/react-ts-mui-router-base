@@ -4,7 +4,7 @@ import ReactDOM from "react-dom/client";
 import CssBaseline from "@mui/material/CssBaseline";
 import { ThemeProvider } from "@mui/material/styles";
 
-import theme from "./assets/theme";
+import theme from "./assets/theme/";
 
 import App from "./App";
 
